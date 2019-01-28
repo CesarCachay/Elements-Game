@@ -1,0 +1,93 @@
+ELEMENTS GAME - PROGRAMMING LANGUAGE PYTHON
+
+
+## importar solo las funciones de random
+from random import randint
+## Definir el nombre del jugador
+jugador = input("Introduce tu nombre: ")
+print("Que comienze el juego " + jugador + " ESTA LISTO?")
+print("COMENZEMOS " + jugador + "!!!")
+print("")
+print("")
+print("OJO: Si desea salir del programa solo escriba 'quit' o 'finalizar' ")
+print("")
+print("")
+## Definir el numero maximo de victorias
+player_wins = 0
+computer_wins = 0
+winning_score = 3
+
+while player_wins < winning_score and computer_wins < winning_score:
+##while winning_score > player_wins  or winning_score > computer_wins:
+    ##Elaboracion de contador de victorias
+    print("Puntaje del jugador: " + str(player_wins) + " -- Puntaje de la computadora: " + str(computer_wins))
+    print("...fuego...")
+    print("...planta...")
+    print("...agua...")
+    ##print("El puntaje de " + str(jugador) + ": es: " + str(puntaje1))
+    ##print("El puntaje de la maquina es: " + str(puntaje2))
+    
+    player = input("(Que elemento escogera?): ").lower()
+    ##if(computer_wins == 3 and player_wins != computer_wins or player_wins == 3 and player_wins != computer_wins):
+    ## Definir las opciones y la opcion de terminar el programa
+    if player == "quit" or player == "finalizar":
+        print("Oh bueno, nos divertiremos en otra ocasion")
+        break
+    random_num = randint(0, 3)
+    if (random_num == 0):
+        computer = "fuego"
+    elif (random_num == 1):
+        computer = "planta"
+    elif (random_num == 2):
+        computer = "agua"
+
+    ## Eleccion de la maquina
+    print("The computer plays: " + computer)
+    
+    ## Condicionales del juego
+    if player == computer:
+        print("Esto es un empate!")
+    elif player == "planta":
+        if computer == "fuego":
+            print("La maquina gana :( ")
+            computer_wins += 1
+        else:
+            print(jugador + " gana!")
+            player_wins += 1
+    elif player == "fuego":
+        if computer == "planta":
+            print(jugador + " gana!")
+            player_wins += 1
+        else:
+            print("La maquina gana!")
+            computer_wins += 1
+    elif (player == "fuego"):
+        if (computer == "agua"):
+            print("La maquina gana!")
+            computer_wins += 1
+        else:
+            print(jugador + " gana!")
+            player_wins += 1
+## hard coding elif and else
+    elif (player == "agua"):
+        if (computer == "fuego"):
+            print(jugador + " gana!")
+            player_wins += 1
+        else:
+            print("La maquina gana!")
+            computer_wins += 1
+    ## Mensaje por si el jugador no incluye alguna de las 3 opciones
+    else:
+        print("Porfavor elija un elemento entre: 'fuego, planta, agua'!")
+        
+## Resultados finales del programa
+if player_wins > computer_wins:
+##if player_wins == 3 and computer_wins == 3:
+    print("Felicidades! " + jugador + " es el GANADOR!!!")
+##elif player_wins != 0 and player_wins == 3 and player_wins == computer_wins:
+elif player_wins == computer_wins:
+    print("AMBOS JUGADORES TIENEN EL MISMO PUNTAJE ESTO ES UN EMPATE !!!")
+else: 
+    print("Oh no, la maquina ha ganado... Siga intentando!")
+        
+
